@@ -12,6 +12,16 @@ export const leagueApi = {
     return response.data
   },
 
+  async updateTeam(teamId: string, name: string): Promise<Team> {
+    const response = await httpClient.put<Team>(`/teams/${teamId}`, { name })
+    return response.data
+  },
+
+  async deactivateTeam(teamId: string): Promise<Team> {
+    const response = await httpClient.patch<Team>(`/teams/${teamId}/deactivate`)
+    return response.data
+  },
+
   async createMatchday(number: number): Promise<Matchday> {
     const response = await httpClient.post<Matchday>('/matchdays', { number })
     return response.data

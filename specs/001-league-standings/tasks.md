@@ -41,7 +41,7 @@ description: "Task list for Football League Standings Management"
 - [X] T010 Crear DbContext y mapeos EF Core para SQLite en backend/src/Infrastructure/Persistence/
 - [X] T011 Crear migración inicial y script de creación de base en backend/src/Infrastructure/Persistence/Migrations/
 - [X] T012 [P] Implementar validaciones comunes (nombre único, goles >= 0, equipos distintos) en backend/src/Api/Validators/
-- [ ] T013 [P] Implementar manejo global de errores con `ProblemDetails` (`application/problem+json`) y respuestas 400 consistentes en backend/src/Api/
+- [X] T013 [P] Implementar manejo global de errores con `ProblemDetails` (`application/problem+json`) y respuestas 400 consistentes en backend/src/Api/
 - [X] T014 [P] Implementar repositorios base para Team/Matchday/Match en backend/src/Infrastructure/Repositories/
 - [X] T015 [P] Implementar cliente HTTP base y tipado compartido de API en frontend/src/services/ y frontend/src/types/
 - [X] T016 Configurar enrutamiento base y layout de aplicación en frontend/src/
@@ -58,25 +58,25 @@ description: "Task list for Football League Standings Management"
 
 ### Tests for User Story 1
 
-- [ ] T017 [P] [US1] Crear pruebas unitarias de validación de resultado en backend/tests/Unit/ResultValidationTests.cs
-- [ ] T018 [P] [US1] Crear prueba de integración de endpoint PUT /matches/{matchId}/result en backend/tests/Integration/MatchesResultEndpointTests.cs
-- [ ] T019 [P] [US1] Crear prueba de formulario de carga de resultado en frontend/src/test/result-form.test.tsx
+- [X] T017 [P] [US1] Crear pruebas unitarias de validación de resultado en backend/tests/Unit/ResultValidationTests.cs
+- [X] T018 [P] [US1] Crear prueba de integración de endpoint PUT /matches/{matchId}/result en backend/tests/Integration/MatchesResultEndpointTests.cs
+- [X] T019 [P] [US1] Crear prueba de formulario de carga de resultado en frontend/src/test/result-form.test.tsx
 
 ### Implementation for User Story 1
 
-- [ ] T020 [US1] Implementar endpoints POST /teams, GET /teams, PUT /teams/{teamId} y PATCH /teams/{teamId}/deactivate en backend/src/Api/Controllers/TeamsController.cs
-- [ ] T021 [US1] Implementar endpoint POST /matchdays en backend/src/Api/Controllers/MatchdaysController.cs
-- [ ] T022 [US1] Implementar endpoint POST /matches en backend/src/Api/Controllers/MatchesController.cs
-- [ ] T023 [US1] Implementar endpoint PUT /matches/{matchId}/result con validaciones en backend/src/Api/Controllers/MatchesController.cs
-- [ ] T024 [US1] Implementar registro de trazabilidad de cambios de resultado en backend/src/Application/UseCases/UpdateMatchResultUseCase.cs
-- [ ] T025 [P] [US1] Implementar página/formulario de registro de resultados en frontend/src/pages/ResultsPage.tsx
-- [ ] T026 [P] [US1] Implementar servicio frontend para equipos, jornadas, partidos y resultado en frontend/src/services/leagueApi.ts
+- [X] T020 [US1] Implementar endpoints POST /teams, GET /teams, PUT /teams/{teamId} y PATCH /teams/{teamId}/deactivate en backend/src/Api/Controllers/TeamsController.cs
+- [X] T021 [US1] Implementar endpoint POST /matchdays en backend/src/Api/Controllers/MatchdaysController.cs
+- [X] T022 [US1] Implementar endpoint POST /matches en backend/src/Api/Controllers/MatchesController.cs
+- [X] T023 [US1] Implementar endpoint PUT /matches/{matchId}/result con validaciones en backend/src/Api/Controllers/MatchesController.cs
+- [X] T024 [US1] Implementar registro de trazabilidad de cambios de resultado en backend/src/Application/UseCases/UpdateMatchResultUseCase.cs
+- [X] T025 [P] [US1] Implementar página/formulario de registro de resultados en frontend/src/pages/ResultsPage.tsx
+- [X] T026 [P] [US1] Implementar servicio frontend para equipos, jornadas, partidos y resultado en frontend/src/services/leagueApi.ts
 
 ### Quality Gate for User Story 1
 
-- [ ] T045 [US1] Ejecutar pruebas de US1 (T017, T018, T019) y registrar evidencia en specs/001-league-standings/checklists/us1-quality-gate.md
-- [ ] T046 [US1] Verificar contrato OpenAPI de endpoints US1 (`/teams`, `/matchdays`, `/matches`, `/matches/{matchId}/result`) y registrar resultado en specs/001-league-standings/checklists/us1-quality-gate.md
-- [ ] T047 [US1] Ejecutar lint/format scoped a cambios de US1 y registrar estado en specs/001-league-standings/checklists/us1-quality-gate.md
+- [X] T045 [US1] Ejecutar pruebas de US1 (T017, T018, T019) y registrar evidencia en specs/001-league-standings/checklists/us1-quality-gate.md
+- [X] T046 [US1] Verificar contrato OpenAPI de endpoints US1 (`/teams`, `/matchdays`, `/matches`, `/matches/{matchId}/result`) y registrar resultado en specs/001-league-standings/checklists/us1-quality-gate.md
+- [X] T047 [US1] Ejecutar lint/format scoped a cambios de US1 y registrar estado en specs/001-league-standings/checklists/us1-quality-gate.md
 
 **Checkpoint**: Usuario puede registrar resultados con validación y trazabilidad básica.
 

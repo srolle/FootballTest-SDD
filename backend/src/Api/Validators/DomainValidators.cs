@@ -1,4 +1,5 @@
 using Application.DTOs;
+using Application.Exceptions;
 
 namespace Api.Validators;
 
@@ -8,7 +9,21 @@ public static class DomainValidators
     {
         if (string.IsNullOrWhiteSpace(request.Name))
         {
-            throw new ArgumentException("Team name is required.");
+            throw new RequestValidationException(new Dictionary<string, string[]>
+            {
+                ["name"] = ["Team name is required."]
+            });
+        }
+    }
+
+    public static void ValidateUpdateTeam(UpdateTeamRequest request)
+    {
+        if (string.IsNullOrWhiteSpace(request.Name))
+        {
+            throw new RequestValidationException(new Dictionary<string, string[]>
+            {
+                ["name"] = ["Team name is required."]
+            });
         }
     }
 
@@ -16,7 +31,10 @@ public static class DomainValidators
     {
         if (request.Number <= 0)
         {
-            throw new ArgumentException("Matchday number must be greater than zero.");
+            throw new RequestValidationException(new Dictionary<string, string[]>
+            {
+                ["number"] = ["Matchday number must be greater than zero."]
+            });
         }
     }
 
@@ -24,7 +42,11 @@ public static class DomainValidators
     {
         if (request.HomeTeamId == request.AwayTeamId)
         {
-            throw new ArgumentException("Home and away teams must be different.");
+            throw new RequestValidationException(new Dictionary<string, string[]>
+            {
+                ["homeTeamId"] = ["Home and away teams must be different."],
+                ["awayTeamId"] = ["Home and away teams must be different."]
+            });
         }
     }
 
@@ -32,7 +54,11 @@ public static class DomainValidators
     {
         if (request.HomeGoals < 0 || request.AwayGoals < 0)
         {
-            throw new ArgumentException("Goals cannot be negative.");
+            throw new RequestValidationException(new Dictionary<string, string[]>
+            {
+                ["homeGoals"] = request.HomeGoals < 0 ? ["Goals cannot be negative."] : [],
+                ["awayGoals"] = request.AwayGoals < 0 ? ["Goals cannot be negative."] : []
+            }.Where(x => x.Value.Length > 0).ToDictionary(x => x.Key, x => x.Value));
         }
     }
 }

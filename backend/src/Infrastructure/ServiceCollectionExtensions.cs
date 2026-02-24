@@ -1,4 +1,5 @@
 using Application.Interfaces;
+using Application.UseCases;
 using Infrastructure.Persistence;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,8 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ITeamRepository, TeamRepository>();
         services.AddScoped<IMatchdayRepository, MatchdayRepository>();
         services.AddScoped<IMatchRepository, MatchRepository>();
+        services.AddScoped<IResultChangeLogRepository, ResultChangeLogRepository>();
+        services.AddScoped<UpdateMatchResultUseCase>();
 
         return services;
     }

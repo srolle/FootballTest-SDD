@@ -140,3 +140,28 @@ Responsable: Equipo local (sesión guiada con Copilot)
 - Resultado: sin hallazgos `CRITICAL` ni `HIGH`; cobertura de requisitos reportada al 100% con tareas asociadas.
 - Nota de mejora menor: solapamiento residual controlado entre quality gates por historia y consolidación de evidencia en `Phase 6` (ya documentado como consolidación, no re-ejecución).
 - Estado de preparación: artefactos SDD listos para continuar con implementación incremental iniciando por US1 (`T013`, `T020`–`T023`).
+
+## 14) Avance de implementación US1 (24/02/2026)
+
+- Tareas completadas: `T013`, `T017`, `T018`, `T020`, `T021`, `T022`, `T023`, `T024`, `T025`, `T026`.
+- Backend implementado:
+	- `GlobalExceptionMiddleware` actualizado para responder `application/problem+json` con `traceId` y errores de validación por campo.
+	- Excepción de validación estructurada `RequestValidationException` para errores de dominio.
+	- `TeamsController` con endpoints `POST /teams`, `GET /teams`, `PUT /teams/{teamId}`, `PATCH /teams/{teamId}/deactivate`.
+	- `MatchdaysController` con endpoint `POST /matchdays`.
+	- `MatchesController` con endpoints `POST /matches` y `PUT /matches/{matchId}/result` con validaciones de existencia/estado.
+	- Caso de uso `UpdateMatchResultUseCase` implementado con registro de trazabilidad (`ResultChangeLog`) por alta/edición de resultado.
+	- DTO agregado: `UpdateTeamRequest`.
+- Validación técnica:
+	- `dotnet build backend/FootballTest.sln` en verde.
+	- `dotnet test backend/FootballTest.sln` en verde (4 tests OK, incluyendo `ResultValidationTests` y `MatchesResultEndpointTests`).
+	- `npm run build` en frontend en verde tras implementar formulario y servicio de US1.
+- Frontend implementado:
+	- `ResultsPage` con flujo mínimo completo de US1: crear equipo, crear jornada, crear partido y registrar resultado final.
+	- `leagueApi` ampliado para cubrir endpoints de equipos/jornadas/partidos/resultados, incluyendo actualización y desactivación de equipos.
+- Quality gate US1 completado:
+	- `T045`: pruebas US1 ejecutadas en verde (backend + frontend).
+	- `T046`: verificación de contrato OpenAPI para endpoints US1 documentada.
+	- `T047`: lint scoped frontend ejecutado en verde y evidenciado.
+	- Evidencia consolidada en `specs/001-league-standings/checklists/us1-quality-gate.md`.
+- Estado de US1: implementado y validado en backend/frontend para flujo MVP de registro de resultados.
