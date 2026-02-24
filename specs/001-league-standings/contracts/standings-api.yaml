@@ -34,6 +34,52 @@ paths:
                 items:
                   $ref: '#/components/schemas/Team'
 
+  /teams/{teamId}:
+    put:
+      summary: Editar equipo
+      parameters:
+        - in: path
+          name: teamId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeamRequest'
+      responses:
+        '200':
+          description: Equipo actualizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+        '400':
+          description: Validación fallida
+        '404':
+          description: Equipo no encontrado
+
+  /teams/{teamId}/deactivate:
+    patch:
+      summary: Desactivar equipo
+      parameters:
+        - in: path
+          name: teamId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Equipo desactivado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+        '404':
+          description: Equipo no encontrado
+
   /matchdays:
     post:
       summary: Crear jornada
@@ -181,6 +227,14 @@ components:
           type: integer
 
     CreateTeamRequest:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+          minLength: 1
+
+    UpdateTeamRequest:
       type: object
       required: [name]
       properties:
