@@ -82,10 +82,18 @@ Responsable: Equipo local (sesión guiada con Copilot)
 
 ## 8) Implementación
 
-- Comando/prompt usado (`/speckit.implement`): No iniciado aún.
-- Cambios de código relevantes: No aplica en esta iteración (solo artefactos SDD).
-- Tests ejecutados y resultado: No aplica aún.
-- Build/lint y resultado: No aplica aún.
+- Comando/prompt usado (`/speckit.implement`): Implementación iniciada de forma manual (sin ejecutar comando formal de Spec Kit en esta sesión).
+- Cambios de código relevantes:
+	- Backend: `Api` configurada con `AddInfrastructure`, middleware global y pipeline base; entidades de dominio y `LeagueDbContext` con migración inicial; repositorios (`TeamRepository`, `MatchRepository`, `MatchdayRepository`) conectados por DI.
+	- Backend (pendiente): carpeta `Api/Controllers` aún sin controladores implementados.
+	- Frontend: enrutamiento base (`/`, `/results`, `/standings`) y servicios HTTP (`leagueApi`) para equipos, jornadas, partidos y actualización de resultados.
+	- Frontend (estado UI): páginas en estado base/MVP con contenido inicial.
+- Tests ejecutados y resultado:
+	- Backend Unit + Integration (`UnitTest1` en ambos proyectos): 2/2 pruebas en verde.
+	- Frontend: ejecución por archivo con runner no detectó pruebas; queda pendiente corrida formal de suite Vitest.
+- Build/lint y resultado:
+	- Backend: `dotnet build backend/FootballTest.sln` exitoso.
+	- Frontend: `npm run build` (tsc + vite build) exitoso.
 
 ## 9) Evidencia
 
@@ -107,3 +115,10 @@ Responsable: Equipo local (sesión guiada con Copilot)
 - Qué no funcionó: Se detectó desalineación tardía entre requisitos y contrato/tareas para edición/desactivación de equipos.
 - Qué mejorar en la próxima iteración: Corregir brechas de consistencia antes de iniciar implementación y luego ejecutar `/speckit.implement` por fases.
 - Estado al cierre de esta actualización: brechas críticas de consistencia corregidas en contrato y tasks; listo para iniciar implementación.
+
+## 11) Actualización operativa (24/02/2026)
+
+- Consulta registrada: "¿por qué demoras tanto en analizar?".
+- Causa de demora observada: tiempo dedicado a revisar contexto del workspace y validar consistencia entre artefactos antes de responder con cambios accionables.
+- Acción aplicada: actualización inmediata de esta bitácora para dejar trazabilidad del estado y del motivo.
+- Estado actual: Copilot operativo y listo para continuar con implementación y/o validaciones según prioridad del equipo.
