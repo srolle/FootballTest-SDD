@@ -1,0 +1,15 @@
+# .NET
+**/bin/
+**/obj/
+
+# Node
+**/node_modules/
+frontend/dist/
+
+# Local data
+*.db
+*.db-shm
+*.db-wal
+
+# IDE
+.vscode/*.log

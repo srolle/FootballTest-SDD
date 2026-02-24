@@ -22,14 +22,14 @@ description: "Task list for Football League Standings Management"
 
 **Purpose**: Inicializar solución backend/frontend y configuración base.
 
-- [ ] T001 Crear solución .NET y proyecto API en backend/src/Api/
-- [ ] T002 Crear proyecto frontend React + TypeScript en frontend/
-- [ ] T003 [P] Configurar estructura de carpetas backend (Domain/Application/Infrastructure) en backend/src/
-- [ ] T004 [P] Configurar estructura de frontend (pages/components/services/hooks/types/state) en frontend/src/
-- [ ] T005 Configurar conexión SQLite y cadena de conexión base en backend/src/Infrastructure/Persistence/
+- [X] T001 Crear solución .NET y proyecto API en backend/src/Api/
+- [X] T002 Crear proyecto frontend React + TypeScript en frontend/
+- [X] T003 [P] Configurar estructura de carpetas backend (Domain/Application/Infrastructure) en backend/src/
+- [X] T004 [P] Configurar estructura de frontend (pages/components/services/hooks/types/state) en frontend/src/
+- [X] T005 Configurar conexión SQLite y cadena de conexión base en backend/src/Infrastructure/Persistence/
 - [ ] T006 [P] Configurar linters y formato para backend y frontend en backend/ y frontend/
-- [ ] T007 [P] Configurar proyectos de pruebas backend Unit/Integration en backend/tests/
-- [ ] T008 [P] Configurar Vitest + Testing Library en frontend/tests/
+- [X] T007 [P] Configurar proyectos de pruebas backend Unit/Integration en backend/tests/
+- [X] T008 [P] Configurar Vitest + Testing Library en frontend/tests/
 
 ---
 
@@ -37,14 +37,14 @@ description: "Task list for Football League Standings Management"
 
 **Purpose**: Base de dominio, persistencia y pipeline HTTP antes de historias.
 
-- [ ] T009 Crear entidades Team, Matchday, Match, StandingEntry y ResultChangeLog en backend/src/Domain/Entities/
-- [ ] T010 Crear DbContext y mapeos EF Core para SQLite en backend/src/Infrastructure/Persistence/
-- [ ] T011 Crear migración inicial y script de creación de base en backend/src/Infrastructure/Persistence/Migrations/
-- [ ] T012 [P] Implementar validaciones comunes (nombre único, goles >= 0, equipos distintos) en backend/src/Api/Validators/
+- [X] T009 Crear entidades Team, Matchday, Match, StandingEntry y ResultChangeLog en backend/src/Domain/Entities/
+- [X] T010 Crear DbContext y mapeos EF Core para SQLite en backend/src/Infrastructure/Persistence/
+- [X] T011 Crear migración inicial y script de creación de base en backend/src/Infrastructure/Persistence/Migrations/
+- [X] T012 [P] Implementar validaciones comunes (nombre único, goles >= 0, equipos distintos) en backend/src/Api/Validators/
 - [ ] T013 [P] Implementar manejo global de errores y respuestas 400 consistentes en backend/src/Api/
-- [ ] T014 [P] Implementar repositorios base para Team/Matchday/Match en backend/src/Infrastructure/Repositories/
-- [ ] T015 [P] Implementar cliente HTTP base y tipado compartido de API en frontend/src/services/ y frontend/src/types/
-- [ ] T016 Configurar enrutamiento base y layout de aplicación en frontend/src/
+- [X] T014 [P] Implementar repositorios base para Team/Matchday/Match en backend/src/Infrastructure/Repositories/
+- [X] T015 [P] Implementar cliente HTTP base y tipado compartido de API en frontend/src/services/ y frontend/src/types/
+- [X] T016 Configurar enrutamiento base y layout de aplicación en frontend/src/
 
 **Checkpoint**: Infraestructura lista para iniciar historias de usuario.
 

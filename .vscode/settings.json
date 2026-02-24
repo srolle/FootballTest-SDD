@@ -7,7 +7,24 @@
         "git fetch": true,
         "git ls-remote": true,
         "ForEach-Object": true,
-        "Test-Path": true
+        "Test-Path": true,
+        "/^dotnet --version; node --version; npm --version$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "New-Item": true,
+        "Out-Null": true,
+        "dotnet new": true,
+        "dotnet sln": true,
+        "dotnet add": true,
+        "Set-Content": true,
+        "dotnet restore": true,
+        "npm install": true,
+        "npx create-vite@latest": true,
+        "dotnet tool": true,
+        "dotnet ef": true,
+        "dotnet build": true,
+        "dotnet test": true
     },
     "chat.promptFilesRecommendations": {
         "speckit.constitution": true,
