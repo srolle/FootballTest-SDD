@@ -1,0 +1,219 @@
+openapi: 3.0.3
+info:
+  title: League Standings API
+  version: 1.0.0
+  description: API para gestión de equipos, partidos y tabla por jornada.
+servers:
+  - url: http://localhost:5000
+paths:
+  /teams:
+    post:
+      summary: Crear equipo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+      responses:
+        '201':
+          description: Equipo creado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+    get:
+      summary: Listar equipos
+      responses:
+        '200':
+          description: Lista de equipos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Team'
+
+  /matchdays:
+    post:
+      summary: Crear jornada
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMatchdayRequest'
+      responses:
+        '201':
+          description: Jornada creada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Matchday'
+
+  /matches:
+    post:
+      summary: Crear partido en jornada
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMatchRequest'
+      responses:
+        '201':
+          description: Partido creado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Match'
+
+  /matches/{matchId}/result:
+    put:
+      summary: Registrar o actualizar resultado final
+      parameters:
+        - in: path
+          name: matchId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateResultRequest'
+      responses:
+        '200':
+          description: Resultado actualizado
+        '400':
+          description: Validación fallida
+
+  /standings:
+    get:
+      summary: Obtener tabla por jornada
+      parameters:
+        - in: query
+          name: matchdayNumber
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+      responses:
+        '200':
+          description: Tabla de posiciones de la jornada
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StandingEntry'
+
+components:
+  schemas:
+    Team:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        isActive:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+
+    Matchday:
+      type: object
+      properties:
+        id:
+          type: string
+        number:
+          type: integer
+        status:
+          type: string
+
+    Match:
+      type: object
+      properties:
+        id:
+          type: string
+        matchdayId:
+          type: string
+        homeTeamId:
+          type: string
+        awayTeamId:
+          type: string
+        homeGoals:
+          type: integer
+          nullable: true
+        awayGoals:
+          type: integer
+          nullable: true
+        status:
+          type: string
+
+    StandingEntry:
+      type: object
+      properties:
+        teamId:
+          type: string
+        teamName:
+          type: string
+        played:
+          type: integer
+        won:
+          type: integer
+        drawn:
+          type: integer
+        lost:
+          type: integer
+        goalsFor:
+          type: integer
+        goalsAgainst:
+          type: integer
+        goalDifference:
+          type: integer
+        points:
+          type: integer
+        position:
+          type: integer
+
+    CreateTeamRequest:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+          minLength: 1
+
+    CreateMatchdayRequest:
+      type: object
+      required: [number]
+      properties:
+        number:
+          type: integer
+          minimum: 1
+
+    CreateMatchRequest:
+      type: object
+      required: [matchdayId, homeTeamId, awayTeamId]
+      properties:
+        matchdayId:
+          type: string
+        homeTeamId:
+          type: string
+        awayTeamId:
+          type: string
+
+    UpdateResultRequest:
+      type: object
+      required: [homeGoals, awayGoals]
+      properties:
+        homeGoals:
+          type: integer
+          minimum: 0
+        awayGoals:
+          type: integer
+          minimum: 0
