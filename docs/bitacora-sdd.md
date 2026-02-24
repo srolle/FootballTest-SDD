@@ -122,3 +122,21 @@ Responsable: Equipo local (sesión guiada con Copilot)
 - Causa de demora observada: tiempo dedicado a revisar contexto del workspace y validar consistencia entre artefactos antes de responder con cambios accionables.
 - Acción aplicada: actualización inmediata de esta bitácora para dejar trazabilidad del estado y del motivo.
 - Estado actual: Copilot operativo y listo para continuar con implementación y/o validaciones según prioridad del equipo.
+
+## 12) Remediación de hallazgos (24/02/2026)
+
+- Acción completada (CRITICAL 1): Se cuantificó `FR-011` en `spec.md` con formato obligatorio `application/problem+json`, campos mínimos (`status`, `title`, `traceId`, `errors`) y condición de no persistencia para solicitudes inválidas.
+- Acción completada (CRITICAL 2): Se movieron quality gates al cierre de cada historia en `tasks.md` (US1, US2 y US3) para cumplir la constitución de calidad por incremento.
+- Acción completada (HIGH): Se ajustaron `SC-001`, `SC-003`, `SC-004` y `SC-005` con métricas operables y ventana de medición explícita en `spec.md`.
+- Acción completada (HIGH): Se agregaron tareas `T055`, `T056` y `T057` para evidencia de cumplimiento de `SC-001`, `SC-004` y `SC-005` en `tasks.md`.
+- Acción completada (MEDIUM): Se limpió `plan.md` eliminando marcadores de plantilla `ACTION REQUIRED` para evitar ambigüedad de artefacto incompleto.
+- Acción completada (MEDIUM): Se alinearon rutas de pruebas frontend en `tasks.md` con la estructura real (`frontend/src/test/`).
+- Acción completada (LOW): Se ajustó `Phase 6` en `tasks.md` para explicitar consolidación de evidencia (sin duplicar ejecuciones ya cerradas por quality gates de historia, salvo cambios nuevos).
+- Estado: CRITICAL, HIGH, MEDIUM y LOW resueltos en artefactos de especificación y planificación de ejecución.
+
+## 13) Validación final de consistencia (24/02/2026)
+
+- Comando usado (`/speckit.analyze`): pasada final posterior a remediaciones en `spec.md`, `plan.md` y `tasks.md`.
+- Resultado: sin hallazgos `CRITICAL` ni `HIGH`; cobertura de requisitos reportada al 100% con tareas asociadas.
+- Nota de mejora menor: solapamiento residual controlado entre quality gates por historia y consolidación de evidencia en `Phase 6` (ya documentado como consolidación, no re-ejecución).
+- Estado de preparación: artefactos SDD listos para continuar con implementación incremental iniciando por US1 (`T013`, `T020`–`T023`).

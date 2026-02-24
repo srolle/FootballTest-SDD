@@ -87,7 +87,7 @@ Como usuario final, quiero ver la tabla de posiciones por jornada para entender 
 - **FR-008**: El sistema MUST mostrar tabla de posiciones por jornada con al menos: equipo, partidos jugados, ganados, empatados, perdidos, goles a favor, goles en contra, diferencia de gol y puntos.
 - **FR-009**: El sistema MUST ordenar la tabla por puntos descendentes y, en caso de empate, por diferencia de gol y luego por goles a favor.
 - **FR-010**: El sistema MUST permitir consultar el ranking de cualquier jornada existente de la temporada.
-- **FR-011**: El sistema MUST informar errores de validación con mensajes claros y sin pérdida de datos previamente válidos.
+- **FR-011**: El sistema MUST responder validaciones fallidas con `HTTP 400` en formato `application/problem+json`, incluyendo `status`, `title`, `traceId` y un objeto `errors` por campo; además, el 100% de solicitudes inválidas MUST no persistir cambios en la base de datos.
 - **FR-012**: El sistema MUST mantener trazabilidad mínima de cambios de resultados (fecha y tipo de cambio).
 
 ### Key Entities *(include if feature involves data)*
@@ -114,8 +114,8 @@ Como usuario final, quiero ver la tabla de posiciones por jornada para entender 
 
 ### Measurable Outcomes
 
-- **SC-001**: El 95% de los resultados de partidos se registran correctamente en menos de 60 segundos desde el inicio de la carga.
+- **SC-001**: En una muestra mínima de 50 registros válidos de resultados, al menos el 95% MUST completarse en <= 60 segundos medidos desde la acción de guardar en UI hasta la respuesta exitosa del backend (HTTP 2xx).
 - **SC-002**: El 100% de los partidos finalizados impacta el puntaje de la tabla sin discrepancias frente a la regla 3/1/0.
-- **SC-003**: Al menos el 90% de las consultas de ranking por jornada se completan en menos de 2 segundos percibidos por el usuario.
-- **SC-004**: Al menos el 95% de usuarios de operación logra completar el flujo "registrar resultado y ver tabla actualizada" sin asistencia externa en el primer intento.
-- **SC-005**: Las incidencias de clasificación incorrecta reportadas por usuarios se reducen al menos 70% frente al proceso manual previo.
+- **SC-003**: Para `GET /standings?matchdayNumber=`, el percentil 90 del tiempo total de respuesta (request recibida por API hasta respuesta enviada) MUST ser <= 2 segundos en entorno local de prueba con dataset de referencia de la feature.
+- **SC-004**: En una prueba guiada con al menos 10 ejecuciones del flujo "registrar resultado y ver tabla actualizada" por usuarios operativos, al menos el 95% de los intentos MUST completarse sin asistencia externa y en el primer intento.
+- **SC-005**: Durante las primeras 4 semanas posteriores a habilitar la solución, la tasa semanal de incidencias de clasificación incorrecta reportadas en canal oficial de soporte MUST reducirse al menos 70% respecto al baseline de las 4 semanas previas del proceso manual.

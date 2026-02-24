@@ -11,12 +11,6 @@ Se construirá una aplicación web para gestionar equipos, partidos y tabla por 
 
 ## Technical Context
 
-<!--
-  ACTION REQUIRED: Replace the content in this section with the technical details
-  for the project. The structure here is presented in advisory capacity to guide
-  the iteration process.
--->
-
 **Language/Version**: C# (.NET 9) + TypeScript (React 19)  
 **Primary Dependencies**: ASP.NET Core Web API, Entity Framework Core, React, React Router, cliente HTTP para consumo de API  
 **Storage**: SQLite  
@@ -53,12 +47,6 @@ specs/001-league-standings/
 ```
 
 ### Source Code (repository root)
-<!--
-  ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
-  for this feature. Delete unused options and expand the chosen structure with
-  real paths (e.g., apps/admin, packages/something). The delivered plan must
-  not include Option labels.
--->
 
 ```text
 backend/
@@ -86,10 +74,9 @@ frontend/
 │   ├── services/
 │   ├── hooks/
 │   ├── types/
-│   └── state/
-└── tests/
-  ├── unit/
-  └── integration/
+│   ├── state/
+│   └── test/
+└── public/
 ```
 
 **Structure Decision**: Se adopta estructura web app con separación frontend/backend para aislar dominio de negocio en la API .NET y mantener UI React enfocada en experiencia y consumo de contratos REST.
