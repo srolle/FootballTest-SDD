@@ -61,4 +61,15 @@ public static class DomainValidators
             }.Where(x => x.Value.Length > 0).ToDictionary(x => x.Key, x => x.Value));
         }
     }
+
+    public static void ValidateGetStandings(int matchdayNumber)
+    {
+        if (matchdayNumber <= 0)
+        {
+            throw new RequestValidationException(new Dictionary<string, string[]>
+            {
+                ["matchdayNumber"] = ["Matchday number must be greater than zero."]
+            });
+        }
+    }
 }

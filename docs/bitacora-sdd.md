@@ -243,3 +243,53 @@ Responsable: Equipo local (sesión guiada con Copilot)
 - Estado de ejecución:
 	- US2 implementada y validada en backend.
 	- Siguiente bloque natural: US3 (`T033` a `T038`, luego `T051` a `T054`).
+
+## 19) Avance de implementación US3 (2026-03-06 15:45:53 -03:00)
+
+- Tareas completadas en este hito:
+	- `T033` prueba de integración de consulta de standings: `backend/tests/Integration/StandingsQueryTests.cs`.
+	- `T034` prueba de render frontend de standings: `frontend/src/test/standings-page.test.tsx`.
+	- `T035` endpoint `GET /standings?matchdayNumber=`: `backend/src/Api/Controllers/StandingsController.cs`.
+	- `T036` desempate por `Points`, `GoalDifference`, `GoalsFor` validado en `StandingsCalculator`.
+	- `T037` página de ranking por jornada con selector: `frontend/src/pages/StandingsPage.tsx`.
+	- `T038` componente reutilizable de tabla: `frontend/src/components/StandingsTable.tsx`.
+- Cambios de soporte incorporados:
+	- DTO de respuesta de standings con nombre de equipo: `backend/src/Application/DTOs/StandingEntryResponse.cs`.
+	- Extensión de validadores para query de standings: `ValidateGetStandings`.
+	- `leagueApi` y tipos frontend actualizados para consumir `/standings`.
+- Evidencia técnica ejecutada:
+	- `dotnet test .\\backend\\tests\\Integration\\Integration.csproj --filter "FullyQualifiedName~StandingsQueryTests"` -> **PASS** (1 test OK).
+	- `npm run test -- src/test/standings-page.test.tsx` -> **PASS** (1 test OK).
+	- `npm run build` (frontend) -> **PASS**.
+	- `get_errors` en archivos modificados -> sin errores.
+- Estado US3:
+	- Implementación funcional backend + frontend completada.
+	- Pendiente cierre de quality gate US3 (`T051`, `T052`, `T053`, `T054`).
+
+## 20) Cierre quality gate US3 (2026-03-06 15:49:48 -03:00)
+
+- Tareas cerradas:
+	- `T051` pruebas US3 backend/frontend ejecutadas y evidenciadas.
+	- `T052` verificación de contrato OpenAPI para `GET /standings?matchdayNumber=`.
+	- `T053` prueba de rendimiento de standings ejecutada (criterio p90 <= 2000ms validado).
+	- `T054` lint/format/build scoped a cambios US3.
+- Evidencia registrada en:
+	- `specs/001-league-standings/checklists/us3-quality-gate.md`.
+- Resumen de resultados:
+	- Integración backend US3: 1/1 prueba en verde (`StandingsQueryTests`).
+	- Performance backend US3: prueba en verde (`StandingsPerformanceTests`).
+	- Frontend US3: 1/1 prueba en verde (`standings-page.test.tsx`).
+	- Lint frontend scoped: en verde.
+	- Build backend + frontend: en verde.
+- Estado de ejecución:
+	- US3 implementada y validada.
+	- Próximo bloque natural: consolidación final de Phase 6 (`T039`-`T044`, `T055`-`T057`).
+
+## 21) Validación integral post-US3 (2026-03-06 15:51:24 -03:00)
+
+- Ejecución de suites completas para control de regresión:
+	- `dotnet test .\\backend\\FootballTest.sln` -> **PASS** (total 10, failed 0, succeeded 10).
+	- `npm run test` en frontend -> **PASS** (3 archivos de prueba, 3 pruebas en verde).
+- Resultado:
+	- Sin regresiones detectadas en US1, US2 y US3 tras integrar endpoint y UI de standings.
+	- Estado de calidad mantenido para continuar con consolidación de evidencias de Phase 6.

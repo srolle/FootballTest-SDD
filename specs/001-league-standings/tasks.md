@@ -118,22 +118,22 @@ description: "Task list for Football League Standings Management"
 
 ### Tests for User Story 3
 
-- [ ] T033 [P] [US3] Crear prueba de integración GET /standings?matchdayNumber= en backend/tests/Integration/StandingsQueryTests.cs
-- [ ] T034 [P] [US3] Crear prueba de render de tabla por jornada en frontend/src/test/standings-page.test.tsx
+- [X] T033 [P] [US3] Crear prueba de integración GET /standings?matchdayNumber= en backend/tests/Integration/StandingsQueryTests.cs
+- [X] T034 [P] [US3] Crear prueba de render de tabla por jornada en frontend/src/test/standings-page.test.tsx
 
 ### Implementation for User Story 3
 
-- [ ] T035 [US3] Implementar endpoint GET /standings?matchdayNumber= en backend/src/Api/Controllers/StandingsController.cs
-- [ ] T036 [US3] Aplicar ordenamiento de desempate (Points, GoalDifference, GoalsFor) en backend/src/Domain/Services/StandingsCalculator.cs
-- [ ] T037 [P] [US3] Implementar página de ranking por jornada con selector en frontend/src/pages/StandingsPage.tsx
-- [ ] T038 [P] [US3] Implementar componente reutilizable de tabla de posiciones en frontend/src/components/StandingsTable.tsx
+- [X] T035 [US3] Implementar endpoint GET /standings?matchdayNumber= en backend/src/Api/Controllers/StandingsController.cs
+- [X] T036 [US3] Aplicar ordenamiento de desempate (Points, GoalDifference, GoalsFor) en backend/src/Domain/Services/StandingsCalculator.cs
+- [X] T037 [P] [US3] Implementar página de ranking por jornada con selector en frontend/src/pages/StandingsPage.tsx
+- [X] T038 [P] [US3] Implementar componente reutilizable de tabla de posiciones en frontend/src/components/StandingsTable.tsx
 
 ### Quality Gate for User Story 3
 
-- [ ] T051 [US3] Ejecutar pruebas de US3 (T033, T034) y registrar evidencia en specs/001-league-standings/checklists/us3-quality-gate.md
-- [ ] T052 [US3] Verificar contrato OpenAPI de endpoint `/standings?matchdayNumber=` y registrar resultado en specs/001-league-standings/checklists/us3-quality-gate.md
-- [ ] T053 [US3] Ejecutar prueba de rendimiento de GET `/standings?matchdayNumber=` y registrar evidencia de SC-003 en specs/001-league-standings/checklists/us3-quality-gate.md
-- [ ] T054 [US3] Ejecutar lint/format scoped a cambios de US3 y registrar estado en specs/001-league-standings/checklists/us3-quality-gate.md
+- [X] T051 [US3] Ejecutar pruebas de US3 (T033, T034) y registrar evidencia en specs/001-league-standings/checklists/us3-quality-gate.md
+- [X] T052 [US3] Verificar contrato OpenAPI de endpoint `/standings?matchdayNumber=` y registrar resultado en specs/001-league-standings/checklists/us3-quality-gate.md
+- [X] T053 [US3] Ejecutar prueba de rendimiento de GET `/standings?matchdayNumber=` y registrar evidencia de SC-003 en specs/001-league-standings/checklists/us3-quality-gate.md
+- [X] T054 [US3] Ejecutar lint/format scoped a cambios de US3 y registrar estado en specs/001-league-standings/checklists/us3-quality-gate.md
 
 **Checkpoint**: Ranking por jornada visible y coherente con reglas del dominio.
 

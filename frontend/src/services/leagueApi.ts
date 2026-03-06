@@ -1,5 +1,5 @@
 import { httpClient } from './httpClient'
-import type { Match, Matchday, Team } from '../types/api'
+import type { Match, Matchday, StandingEntry, Team } from '../types/api'
 
 export const leagueApi = {
   async getTeams(): Promise<Team[]> {
@@ -38,5 +38,12 @@ export const leagueApi = {
 
   async updateResult(matchId: string, homeGoals: number, awayGoals: number): Promise<void> {
     await httpClient.put(`/matches/${matchId}/result`, { homeGoals, awayGoals })
+  },
+
+  async getStandings(matchdayNumber: number): Promise<StandingEntry[]> {
+    const response = await httpClient.get<StandingEntry[]>('/standings', {
+      params: { matchdayNumber },
+    })
+    return response.data
   },
 }
