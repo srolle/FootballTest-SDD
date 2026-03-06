@@ -10,6 +10,9 @@ public class MatchdayRepository(LeagueDbContext dbContext) : IMatchdayRepository
     public async Task<Matchday?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
         => await dbContext.Matchdays.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 
+    public async Task<Matchday?> GetByNumberAsync(int number, CancellationToken cancellationToken = default)
+        => await dbContext.Matchdays.FirstOrDefaultAsync(x => x.Number == number, cancellationToken);
+
     public async Task<bool> ExistsByNumberAsync(int number, CancellationToken cancellationToken = default)
         => await dbContext.Matchdays.AnyAsync(x => x.Number == number, cancellationToken);
 

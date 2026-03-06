@@ -90,21 +90,21 @@ description: "Task list for Football League Standings Management"
 
 ### Tests for User Story 2
 
-- [ ] T027 [P] [US2] Crear pruebas unitarias de regla 3/1/0 y estadísticas en backend/tests/Unit/StandingsCalculationTests.cs
-- [ ] T028 [P] [US2] Crear prueba de integración de recálculo tras editar resultado en backend/tests/Integration/StandingsRecalculationTests.cs
+- [X] T027 [P] [US2] Crear pruebas unitarias de regla 3/1/0 y estadísticas en backend/tests/Unit/StandingsCalculationTests.cs
+- [X] T028 [P] [US2] Crear prueba de integración de recálculo tras editar resultado en backend/tests/Integration/StandingsRecalculationTests.cs
 
 ### Implementation for User Story 2
 
-- [ ] T029 [US2] Implementar servicio de cálculo de standings por jornada en backend/src/Domain/Services/StandingsCalculator.cs
-- [ ] T030 [US2] Implementar caso de uso de recálculo cuando cambia resultado final en backend/src/Application/UseCases/RecalculateStandingsUseCase.cs
-- [ ] T031 [US2] Persistir snapshots StandingEntry por jornada en backend/src/Infrastructure/Repositories/StandingEntryRepository.cs
-- [ ] T032 [US2] Implementar caso de uso de consulta de standings por jornada en backend/src/Application/UseCases/GetStandingsByMatchdayUseCase.cs
+- [X] T029 [US2] Implementar servicio de cálculo de standings por jornada en backend/src/Domain/Services/StandingsCalculator.cs
+- [X] T030 [US2] Implementar caso de uso de recálculo cuando cambia resultado final en backend/src/Application/UseCases/RecalculateStandingsUseCase.cs
+- [X] T031 [US2] Persistir snapshots StandingEntry por jornada en backend/src/Infrastructure/Repositories/StandingEntryRepository.cs
+- [X] T032 [US2] Implementar caso de uso de consulta de standings por jornada en backend/src/Application/UseCases/GetStandingsByMatchdayUseCase.cs
 
 ### Quality Gate for User Story 2
 
-- [ ] T048 [US2] Ejecutar pruebas de US2 (T027, T028) y registrar evidencia en specs/001-league-standings/checklists/us2-quality-gate.md
-- [ ] T049 [US2] Verificar contrato OpenAPI de endpoints afectados por recálculo y registrar resultado en specs/001-league-standings/checklists/us2-quality-gate.md
-- [ ] T050 [US2] Ejecutar lint/format scoped a cambios de US2 y registrar estado en specs/001-league-standings/checklists/us2-quality-gate.md
+- [X] T048 [US2] Ejecutar pruebas de US2 (T027, T028) y registrar evidencia en specs/001-league-standings/checklists/us2-quality-gate.md
+- [X] T049 [US2] Verificar contrato OpenAPI de endpoints afectados por recálculo y registrar resultado en specs/001-league-standings/checklists/us2-quality-gate.md
+- [X] T050 [US2] Ejecutar lint/format scoped a cambios de US2 y registrar estado en specs/001-league-standings/checklists/us2-quality-gate.md
 
 **Checkpoint**: Puntos y estadísticas se calculan y recalculan automáticamente de forma consistente.
 

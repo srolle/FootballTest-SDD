@@ -165,3 +165,81 @@ Responsable: Equipo local (sesión guiada con Copilot)
 	- `T047`: lint scoped frontend ejecutado en verde y evidenciado.
 	- Evidencia consolidada en `specs/001-league-standings/checklists/us1-quality-gate.md`.
 - Estado de US1: implementado y validado en backend/frontend para flujo MVP de registro de resultados.
+
+## 15) Actualización operativa y plan corto US2 (2026-03-06 15:26:13 -03:00)
+
+- Solicitud atendida: actualización de bitácora con fecha/hora y continuación con el punto 2 (plan de ejecución de US2).
+- Estado consolidado al momento:
+	- Artefactos SDD (`spec`, `plan`, `tasks`, `research`, `data-model`, `contract`) vigentes y consistentes para continuar implementación.
+	- US1 cerrada con quality gate en verde.
+	- US2 y US3 pendientes de implementación y validación.
+
+### Plan corto de ejecución US2 (orden recomendado)
+
+1. `T027` Definir y dejar en rojo pruebas unitarias de regla 3/1/0 y estadísticas por equipo.
+2. `T029` Implementar `StandingsCalculator` en dominio para cálculo determinístico (puntos, PJ, G, E, P, GF, GC, DG).
+3. `T031` Implementar persistencia de snapshots `StandingEntry` por jornada.
+4. `T030` Implementar `RecalculateStandingsUseCase` al editar resultado finalizado.
+5. `T032` Implementar `GetStandingsByMatchdayUseCase` para consulta por jornada.
+6. `T028` Ejecutar y ajustar prueba de integración de recálculo tras edición de resultado.
+7. `T048` Correr quality gate de pruebas US2 y registrar evidencia.
+8. `T049` Verificar endpoints impactados por recálculo contra OpenAPI y registrar resultado.
+9. `T050` Ejecutar lint/format/build de cambios US2 y registrar evidencia.
+
+### Criterios de validación US2 (operativos)
+
+- Regla 3/1/0 exacta para victoria/empate/derrota en todos los casos de prueba.
+- Recalculo correcto de tabla al modificar un resultado finalizado (sin inconsistencias acumuladas).
+- Snapshot por jornada persistido y consultable sin duplicidades por equipo/jornada.
+- Sin regresión de US1 (actualización de resultado mantiene trazabilidad y validaciones existentes).
+- Evidencia mínima registrada en checklist US2 correspondiente.
+
+## 16) Avance de implementación US2 - hito inicial (2026-03-06 15:31:27 -03:00)
+
+- Tareas ejecutadas en este hito:
+	- `T027` completada: pruebas unitarias de cálculo de standings agregadas en `backend/tests/Unit/StandingsCalculationTests.cs`.
+	- `T029` completada: servicio de dominio `StandingsCalculator` implementado en `backend/src/Domain/Services/StandingsCalculator.cs`.
+- Cobertura funcional incorporada en pruebas:
+	- Regla 3 puntos por victoria.
+	- Regla 1 punto por empate.
+	- Ordenamiento por criterios de desempate (Points, GoalDifference, GoalsFor) y asignación de posición.
+- Validación técnica ejecutada:
+	- `dotnet test .\\backend\\tests\\Unit\\Unit.csproj` -> **PASS** (6 tests OK, 0 fallos).
+	- `dotnet build .\\backend\\FootballTest.sln` -> **PASS**.
+- Estado US2 tras este hito:
+	- Avance backend de cálculo base listo para integrar persistencia de snapshots (`T031`) y recálculo por cambio de resultado (`T030`).
+
+## 17) Avance de implementación US2 - persistencia y recálculo (2026-03-06 15:34:29 -03:00)
+
+- Tareas completadas en este hito:
+	- `T028` prueba de integración de recálculo: `backend/tests/Integration/StandingsRecalculationTests.cs`.
+	- `T030` caso de uso de recálculo: `backend/src/Application/UseCases/RecalculateStandingsUseCase.cs`.
+	- `T031` persistencia de snapshots: `backend/src/Infrastructure/Repositories/StandingEntryRepository.cs`.
+	- `T032` consulta por jornada: `backend/src/Application/UseCases/GetStandingsByMatchdayUseCase.cs`.
+- Soporte técnico agregado para US2:
+	- Contratos extendidos: `IMatchRepository`, `IMatchdayRepository`, `IStandingEntryRepository`.
+	- Implementaciones extendidas: `MatchRepository` (query de partidos finalizados hasta jornada), `MatchdayRepository` (búsqueda por número), DI en `ServiceCollectionExtensions`.
+	- Integración funcional: `UpdateMatchResultUseCase` ahora dispara recálculo de standings tras registrar/editar resultado.
+- Evidencia de validación:
+	- `dotnet test .\\backend\\FootballTest.sln` -> **PASS** (8 tests OK, 0 fallos).
+	- `get_errors` sobre proyectos backend -> sin errores.
+- Estado US2 tras este hito:
+	- Núcleo backend implementado para cálculo, persistencia y recálculo de tabla por jornada.
+	- Pendiente quality gate US2 (`T048`, `T049`, `T050`) y exposición de endpoint de standings en US3.
+
+## 18) Cierre quality gate US2 (2026-03-06 15:35:42 -03:00)
+
+- Tareas cerradas:
+	- `T048` pruebas US2 ejecutadas y evidenciadas.
+	- `T049` verificación de contrato OpenAPI para endpoint impactado por recálculo.
+	- `T050` validación técnica scoped a cambios US2.
+- Evidencia registrada en:
+	- `specs/001-league-standings/checklists/us2-quality-gate.md`.
+- Resumen de resultados:
+	- Unit US2: 3/3 pruebas en verde.
+	- Integration US2: 1/1 prueba en verde.
+	- Build backend: exitoso.
+	- `get_errors` en backend/tests: sin errores.
+- Estado de ejecución:
+	- US2 implementada y validada en backend.
+	- Siguiente bloque natural: US3 (`T033` a `T038`, luego `T051` a `T054`).

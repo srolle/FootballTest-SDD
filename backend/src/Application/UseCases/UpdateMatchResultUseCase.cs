@@ -7,7 +7,8 @@ namespace Application.UseCases;
 
 public class UpdateMatchResultUseCase(
     IMatchRepository matchRepository,
-    IResultChangeLogRepository resultChangeLogRepository)
+    IResultChangeLogRepository resultChangeLogRepository,
+    RecalculateStandingsUseCase recalculateStandingsUseCase)
 {
     public async Task<Match> ExecuteAsync(Guid matchId, UpdateResultRequest request, CancellationToken cancellationToken = default)
     {
@@ -44,6 +45,8 @@ public class UpdateMatchResultUseCase(
 
         await resultChangeLogRepository.AddAsync(changeLog, cancellationToken);
         await resultChangeLogRepository.SaveChangesAsync(cancellationToken);
+
+        await recalculateStandingsUseCase.ExecuteAsync(match.MatchdayId, cancellationToken);
 
         return match;
     }

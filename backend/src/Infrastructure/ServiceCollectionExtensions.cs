@@ -1,5 +1,6 @@
 using Application.Interfaces;
 using Application.UseCases;
+using Domain.Services;
 using Infrastructure.Persistence;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,11 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IMatchdayRepository, MatchdayRepository>();
         services.AddScoped<IMatchRepository, MatchRepository>();
         services.AddScoped<IResultChangeLogRepository, ResultChangeLogRepository>();
+        services.AddScoped<IStandingEntryRepository, StandingEntryRepository>();
+
+        services.AddScoped<StandingsCalculator>();
+        services.AddScoped<RecalculateStandingsUseCase>();
+        services.AddScoped<GetStandingsByMatchdayUseCase>();
         services.AddScoped<UpdateMatchResultUseCase>();
 
         return services;
