@@ -1,9 +1,8 @@
 import axios from 'axios'
-
-const baseURL = import.meta.env.VITE_API_BASE_URL ?? 'https://localhost:5001'
+import { apiBaseURL } from '../config/apiBaseUrl'
 
 export const httpClient = axios.create({
-  baseURL,
+  baseURL: apiBaseURL,
   headers: {
     'Content-Type': 'application/json',
   },

@@ -338,3 +338,33 @@ Responsable: Equipo local (sesión guiada con Copilot)
 	- `npm run build` -> **PASS**.
 - Cierre:
 	- Estado técnico global en verde y trazabilidad consolidada en artefactos SDD.
+
+## 25) Métricas de uso Copilot y costos (2026-03-06 16:11:52 -03:00)
+
+- Solicitud atendida: estadística de uso de Copilot y costos.
+- Resultado de acceso en entorno local:
+	- `gh --version` no disponible (`CommandNotFoundException`), por lo que no fue posible consultar API de cuenta/organización directamente desde esta terminal.
+- Métricas de actividad del proyecto (proxy de uso en esta sesión):
+	- `TASK_TOTAL=57`
+	- `TASK_DONE=57`
+	- `CHECKLIST_FILES=10`
+	- `GIT_CHANGED_FILES=0`
+- Referencia operativa para costo real:
+	- Validado endpoint oficial de métricas: `GET /orgs/{org}/copilot/metrics` (requiere permisos de organización/enterprise y política habilitada).
+	- Costeo se determina por licencias/asientos del plan activo y ciclo de facturación (según documentación oficial de GitHub Copilot Licenses).
+
+## 26) Debug frontend Invalid URL (2026-03-06 16:26:56 -03:00)
+
+- Síntoma reportado:
+	- Frontend muestra error `Failed to construct 'URL': Invalid URL` al consumir API.
+- Causa raíz identificada:
+	- `VITE_API_BASE_URL` llegaba en formato no válido para `URL`/axios en runtime (casos reproducidos: comillas envolventes y espacios al final; también host sin esquema puede provocar protocolo no soportado).
+	- En el código previo, la variable se consumía sin normalización ni validación en `frontend/src/services/httpClient.ts`.
+- Remediación aplicada:
+	- Se creó `frontend/src/config/apiBaseUrl.ts` para normalizar y validar `VITE_API_BASE_URL` (trim, limpieza de comillas, esquema por defecto `http://` si falta, validación de protocolo `http/https`, bloqueo de `query/hash`).
+	- Se actualizó `frontend/src/services/httpClient.ts` y `frontend/src/hooks/useApiBaseUrl.ts` para usar el valor validado compartido.
+- Verificación:
+	- `npm run build` en `frontend` ejecutado en verde tras cambios.
+	- `npm run test` en `frontend` ejecutado en verde (3/3 pruebas).
+- Nota operativa:
+	- Mantener `VITE_API_BASE_URL` sin comillas y sin espacios de cierre. Formato recomendado: `http://localhost:5080`.
