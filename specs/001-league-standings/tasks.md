@@ -27,7 +27,7 @@ description: "Task list for Football League Standings Management"
 - [X] T003 [P] Configurar estructura de carpetas backend (Domain/Application/Infrastructure) en backend/src/
 - [X] T004 [P] Configurar estructura de frontend (pages/components/services/hooks/types/state) en frontend/src/
 - [X] T005 Configurar conexión SQLite y cadena de conexión base en backend/src/Infrastructure/Persistence/
-- [ ] T006 [P] Configurar linters y formato para backend y frontend en backend/ y frontend/
+- [X] T006 [P] Configurar linters y formato para backend y frontend en backend/ y frontend/
 - [X] T007 [P] Configurar proyectos de pruebas backend Unit/Integration en backend/tests/
 - [X] T008 [P] Configurar Vitest + Testing Library en frontend/src/test/
 
@@ -143,15 +143,15 @@ description: "Task list for Football League Standings Management"
 
 **Purpose**: Consolidación final de documentación y evidencia global (con quality gates ya ejecutados por historia).
 
-- [ ] T039 [P] Documentar setup y ejecución local en README.md
-- [ ] T040 [P] Actualizar docs de flujo SDD y evidencia en docs/bitacora-sdd.md
-- [ ] T041 Consolidar resultados de pruebas backend/frontend (US1-US3) y registrar resumen final en specs/001-league-standings/checklists/test-execution.md (sin re-ejecutar pruebas ya cerradas en quality gates, salvo cambios nuevos)
-- [ ] T042 Consolidar estado de lint/format de historias (US1-US3) en specs/001-league-standings/checklists/code-quality.md (sin re-ejecutar validaciones ya cerradas, salvo cambios nuevos)
-- [ ] T043 Consolidar verificación de contrato OpenAPI por historia en un reporte final en specs/001-league-standings/contracts/standings-api.yaml y specs/001-league-standings/checklists/code-quality.md
-- [ ] T044 Consolidar evidencia final de performance y calidad de historias en specs/001-league-standings/checklists/performance.md (incluyendo resultados de T053/T055/T056/T057)
-- [ ] T055 [P] Ejecutar medición de SC-001 (>=50 registros de resultados) y registrar tiempos/evidencia en specs/001-league-standings/checklists/sc-001-execution.md
-- [ ] T056 [P] Ejecutar prueba operativa de SC-004 (>=10 ejecuciones de flujo end-to-end) y registrar resultados en specs/001-league-standings/checklists/sc-004-ux-execution.md
-- [ ] T057 [P] Definir baseline de incidencias manuales y plan de seguimiento de 4 semanas para SC-005 en specs/001-league-standings/checklists/sc-005-baseline-and-followup.md
+- [X] T039 [P] Documentar setup y ejecución local en README.md
+- [X] T040 [P] Actualizar docs de flujo SDD y evidencia en docs/bitacora-sdd.md
+- [X] T041 Consolidar resultados de pruebas backend/frontend (US1-US3) y registrar resumen final en specs/001-league-standings/checklists/test-execution.md (sin re-ejecutar pruebas ya cerradas en quality gates, salvo cambios nuevos)
+- [X] T042 Consolidar estado de lint/format de historias (US1-US3) en specs/001-league-standings/checklists/code-quality.md (sin re-ejecutar validaciones ya cerradas, salvo cambios nuevos)
+- [X] T043 Consolidar verificación de contrato OpenAPI por historia en un reporte final en specs/001-league-standings/contracts/standings-api.yaml y specs/001-league-standings/checklists/code-quality.md
+- [X] T044 Consolidar evidencia final de performance y calidad de historias en specs/001-league-standings/checklists/performance.md (incluyendo resultados de T053/T055/T056/T057)
+- [X] T055 [P] Ejecutar medición de SC-001 (>=50 registros de resultados) y registrar tiempos/evidencia en specs/001-league-standings/checklists/sc-001-execution.md
+- [X] T056 [P] Ejecutar prueba operativa de SC-004 (>=10 ejecuciones de flujo end-to-end) y registrar resultados en specs/001-league-standings/checklists/sc-004-ux-execution.md
+- [X] T057 [P] Definir baseline de incidencias manuales y plan de seguimiento de 4 semanas para SC-005 en specs/001-league-standings/checklists/sc-005-baseline-and-followup.md
 
 ---
 

@@ -2,6 +2,19 @@
 
 Guía rápida para ejecutar la aplicación en entorno local (backend .NET + frontend React/Vite).
 
+## Inicio rápido (demo local)
+
+Si quieres abrir backend y frontend en ventanas separadas con configuración de demo:
+
+```powershell
+.\run-demo.bat
+```
+
+Esto levanta:
+
+- API en `http://localhost:5080`
+- Frontend en `http://localhost:5173`
+
 ## Prerrequisitos
 
 - Windows, macOS o Linux
@@ -119,6 +132,29 @@ Con backend y frontend levantados, ir a `http://localhost:5173/results` y ejecut
 
 Resultado esperado: mensajes de éxito en la UI y persistencia en SQLite (`league.db`).
 
+## 5.1) Demo guiada (US2 y US3)
+
+Después de completar US1:
+
+1. Ir a `http://localhost:5173/standings`
+2. En `Jornada`, ingresar `1`
+3. Click en `Consultar tabla`
+
+Resultado esperado:
+
+- Se visualiza tabla de posiciones con columnas: PJ, G, E, P, GF, GC, DG y puntos.
+- Orden aplicado por desempate: Puntos DESC, DG DESC, GF DESC.
+
+Prueba de recálculo (US2):
+
+1. Volver a `http://localhost:5173/results`
+2. Editar el resultado del mismo `Match ID` (por ejemplo de `2-1` a `1-2`)
+3. Volver a `http://localhost:5173/standings` y consultar la misma jornada
+
+Resultado esperado:
+
+- La tabla se recalcula y refleja el nuevo marcador.
+
 ## 6) Build y pruebas
 
 Backend:
@@ -134,6 +170,16 @@ Frontend:
 Set-Location .\frontend
 npm run build
 npm run test
+```
+
+Checks de calidad recomendados:
+
+```powershell
+Set-Location .\frontend
+npm run lint
+Set-Location ..
+dotnet format .\backend\FootballTest.sln --verify-no-changes
+dotnet test .\backend\tests\Integration\Integration.csproj --filter "FullyQualifiedName~StandingsPerformanceTests"
 ```
 
 ## Problemas comunes

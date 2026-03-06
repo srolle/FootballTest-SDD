@@ -293,3 +293,48 @@ Responsable: Equipo local (sesión guiada con Copilot)
 - Resultado:
 	- Sin regresiones detectadas en US1, US2 y US3 tras integrar endpoint y UI de standings.
 	- Estado de calidad mantenido para continuar con consolidación de evidencias de Phase 6.
+
+## 22) Cierre de consolidación Phase 6 (2026-03-06 15:59:24 -03:00)
+
+- Tareas cerradas en este bloque:
+	- `T039` actualización de `README.md` con arranque rápido (`run-demo.bat`) y validación US2/US3.
+	- `T040` actualización de esta bitácora con trazabilidad de cierre.
+	- `T041` consolidación de pruebas en `specs/001-league-standings/checklists/test-execution.md`.
+	- `T042` consolidación de lint/format/calidad en `specs/001-league-standings/checklists/code-quality.md`.
+	- `T043` consolidación de verificación OpenAPI por historia en `standings-api.yaml` y `code-quality.md`.
+	- `T044` consolidación de performance en `specs/001-league-standings/checklists/performance.md`.
+	- `T055` evidencia SC-001 en `sc-001-execution.md`.
+	- `T056` evidencia SC-004 en `sc-004-ux-execution.md`.
+	- `T057` baseline y plan de seguimiento SC-005 en `sc-005-baseline-and-followup.md`.
+- Evidencia cuantitativa registrada:
+	- SC-001 (50 registros): `successRate=100.00`, `avgMs=28.54`, `p95Ms=57`, `minMs=13`, `maxMs=414`.
+	- SC-004 (10 flujos E2E simulados): `successRate=100.00`, `avgFlowMs=199.30`, `p95FlowMs=1485`, `minFlowMs=41`, `maxFlowMs=1485`.
+	- SC-003: validado previamente en `us3-quality-gate.md` con prueba dedicada y estado PASS.
+- Estado al cierre:
+	- Phase 6 completada en artefactos y checklist.
+	- Pendiente fuera de Phase 6 atendido en cierre final (`T006`).
+
+## 23) Cierre final de tareas (2026-03-06 16:01:21 -03:00)
+
+- Tarea cerrada:
+	- `T006` configuración compartida de linters/formato backend/frontend.
+- Evidencia aplicada:
+	- Se agregó `.editorconfig` en raíz de repo con reglas base para C# y frontend.
+	- Se validó backend format check con `dotnet format .\\backend\\FootballTest.sln --verify-no-changes` (exit code 0).
+	- Frontend mantiene lint activo por `eslint.config.js` y script `npm run lint`.
+- Estado global de `tasks.md`:
+	- Todas las tareas `T001` a `T057` en estado completado (`[X]`).
+
+## 24) Validación técnica final post-formato (2026-03-06 16:05:42 -03:00)
+
+- Formato backend:
+	- `dotnet format .\\backend\\FootballTest.sln` aplicado.
+	- `dotnet format .\\backend\\FootballTest.sln --verify-no-changes` -> exit code 0.
+- Verificación backend:
+	- `dotnet test .\\backend\\FootballTest.sln` -> **PASS** (total 12, failed 0, succeeded 12).
+- Verificación frontend:
+	- `npm run test` -> **PASS** (3/3 tests).
+	- `npm run lint` -> **PASS**.
+	- `npm run build` -> **PASS**.
+- Cierre:
+	- Estado técnico global en verde y trazabilidad consolidada en artefactos SDD.

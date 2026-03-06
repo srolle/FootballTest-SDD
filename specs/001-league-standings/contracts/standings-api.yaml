@@ -5,6 +5,29 @@ info:
   description: API para gestión de equipos, partidos y tabla por jornada.
 servers:
   - url: http://localhost:5000
+x-quality-verification:
+  lastValidatedAt: "2026-03-06 15:57:47 -03:00"
+  stories:
+    US1:
+      verified: true
+      endpoints:
+        - POST /teams
+        - GET /teams
+        - PUT /teams/{teamId}
+        - PATCH /teams/{teamId}/deactivate
+        - POST /matchdays
+        - POST /matches
+        - PUT /matches/{matchId}/result
+    US2:
+      verified: true
+      endpoints:
+        - PUT /matches/{matchId}/result
+      notes: "Recalculation behavior is internal and does not change request/response shape."
+    US3:
+      verified: true
+      endpoints:
+        - GET /standings?matchdayNumber=
+      notes: "Query validation and standings payload fields verified against implementation."
 paths:
   /teams:
     post:
